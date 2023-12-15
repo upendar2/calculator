@@ -1,0 +1,192 @@
+ <!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Cauliculator</title>
+        <link rel="icon" href="C:\Users\gorle\OneDrive\Desktop\UPENDRA\caculator.png">
+        <style>
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: black;
+                background-repeat: no-repeat;
+                background-size: 1500px;
+                background-position:center;
+            }
+            #container{
+                margin-top:10%;
+                width: 300px;
+                border-style: solid;
+                border-color: white;
+                border-radius: 15px;
+                padding: 20px;
+                box-shadow: 4px 2px 5px rgb(247, 247, 247);
+            }
+            .hell1{
+                display: flex;
+                flex-direction: row-reverse;
+            }
+            #hel{
+                border: none;
+                outline: none;
+                padding: 10px;
+                width: 100%;
+                background: transparent;
+                color: white;
+                margin-right: 0px;
+            }
+            .container1{
+                display: flex;
+                background-color: rgb(53, 74, 181);
+                padding: 20px;
+                flex-direction: row-reverse;
+            }
+            #inner{
+                display: flex;
+                flex-direction: row-reverse;
+                padding: 10px;
+                width: 100%;
+                outline: none;
+                background:none;
+                color: white;
+            }
+            .container2{
+                border-radius: 5px;
+            }
+            .container2 input[type="button"]{
+                width: 91px;
+                padding: 13px;
+                border-radius: 5px;
+                color: white;
+                font-weight: 900;
+                font-size: 17px;
+                margin: 3px;
+                background: transparent;  
+            box-shadow: 2px 2px  rgb(0, 255, 174);   }
+        #container .cli{
+            width: 100%;
+            color:white;
+            background: red;
+            padding: 15px;
+            box-shadow: 2px 2px 5px 2px red;
+            border-radius: 5px;
+            font-size: 20px;
+            margin: 10px 2px auto;
+        }
+        h1{
+            color:  white;
+        }
+        hr{
+            background-color: yellow;
+        }
+        </style>
+    </head>
+    <body>
+        
+        
+    <div id="container">
+        <hr>
+        <hr>
+        <marquee>
+        <center><h1>CALCULATOR</h1></center>
+    </marquee>
+        <hr>
+        <hr>
+        <div class="hell1">
+        <input id="hel" placeholder="Recent here">
+        </div>
+        <div class="container1">
+            <input type="text" id="inner" placeholder="Enter an expression">
+        </div>
+        <div class="container2">
+            <input type="button" value="1" onclick="number(1)">
+            <input type="button" value="2" onclick="number(2)">
+            <input type="button" value="3" onclick="number(3)">
+            <input type="button" value="4" onclick="number(4)">
+            <input type="button" value="5" onclick="number(5)">
+            <input type="button" value="6" onclick="number(6)">
+            <input type="button" value="7" onclick="number(7)">
+            <input type="button" value="8" onclick="number(8)">
+            <input type="button" value="9" onclick="number(9)">
+            <input type="button" value="." onclick="number('.')">
+            <input type="button" value="0" onclick="number(0)">
+            <input type="button" value="+" onclick="operater('+')">
+            <input type="button" value="-" onclick="operater('-')">
+            <input type="button" value="*" onclick="operater('*')">
+            <input type="button" value="/" onclick="operater('/')">
+            <input type="button" value="Sqrt" onclick="calsqrt()">
+            <input type="button" value="Exp" onclick="exponent()">
+            <input type="button" value="Ans" onclick="calculate()">
+            
+        </div>
+                 <input type="button" value="clear" class="cli" onclick="clearesult()">
+    </div>
+    </body>
+    <script>
+        let eqn="";
+        let c="";
+        var input=document.getElementById("inner");
+        input.addEventListener("keydown",function(event)
+            {
+                if(event.keyCode==13)
+                {
+                    calculate();
+                }
+            });
+        function number(num)
+        {
+            eqn+=num;
+            update();
+            
+        }
+        function operater(op)
+        {
+            eqn+=op;
+            update();
+        }
+        function recent()
+        {
+            let b=document.getElementById("inner").value;
+            c+=b;
+            document.getElementById("hel").value=b;
+        }
+        function update()
+        {
+            document.getElementById("inner").value=eqn;
+        }
+        function calculate()
+        {
+            try{
+                let a=document.getElementById("inner").value;
+                recent();
+                eqn=eval(a);
+                update();
+            }
+            catch(error)
+            {
+                alert("invalid expression");
+                clearesult();
+            }
+        }
+        function calsqrt()
+        {
+            let a=document.getElementById("inner").value;
+            eqn=Math.sqrt(a);
+            update();
+        }
+        function exponent()
+        {
+            let a=document.getElementById("inner").value;
+            eqn=Math.exp(a);
+            update();
+        }
+        function clearesult()
+        {
+            eqn="";
+            c="";
+            recent();
+            update();
+        }
+        
+     </script>
+</html>
